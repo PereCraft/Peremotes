@@ -1,0 +1,90 @@
+# Set true or false if you want to show your emotes
+enable: true
+
+# If you want to set colors use the minecraft code and replace & with §
+emotes-list:
+    §c♥:
+        - ":heart:"
+        - "<3"
+    ☠:
+        - ":skull:"
+    §e☺:
+        - ":happy:"
+        - "(:"
+        - ":)"
+        - ":D"
+    §e☹:
+        - ":sad:"
+        - ":("
+        - "):"
+        - "D:"
+    §7♪:
+        - ":note1:"
+    §7♩:
+        - ":note2:"
+    §7♫:
+        - ":note3:"
+    §7♬: 
+        - ":note4:"
+    §7♪ ♩ ♫ ♬:
+        - ":music:"
+    §c☭:
+        - ":communism:"
+    §b♂:
+        - ":male:"
+    §d♀:
+        - ":female:"
+    §5☿:
+        - ":transgender:"
+    §a☮:
+        - ":peace:"
+    ☯:
+        - ":yinyang:"
+    §e☢:
+        - ":nuclear:"
+    §7➀:
+        - ":1:"
+    §7➁:
+        - ":2:"
+    §7➂:
+        - ":3:"
+    §7➃:
+        - ":4:"
+    §7➄:
+        - ":5:"
+    §7➅:
+        - ":6:"
+    §7➆:
+        - ":7:"
+    §7➇:
+        - ":8:"
+    §7➈:
+        - ":9:"
+    §7➉:
+        - ":10:"
+    ✟:
+        - ":cross:"
+    §e★:
+        - ":star:"
+        - ":*:"
+    ✎:
+        - ":pen:"
+    ☜:
+        - ":hand_left:"
+        - ":left:"
+    ☞:
+        - ":hand_right:"
+        - ":right:"
+    ☝:
+        - ":hand_up:"
+        - ":up:"
+    ☟: 
+        - ":hand_down:"
+        - ":down:"
+    §e☀:
+        - ":sun:"
+    ☾:
+        - ":moon:"
+    §7☎:
+        - ":telephone:"
+        - ":phone:"

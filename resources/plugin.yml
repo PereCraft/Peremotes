@@ -1,0 +1,10 @@
+name: Peremotes
+author: PereCraft
+version: 1.2
+main: peremotes.Peremotes
+description: Emotes di PereCraft
+commands:
+    peremotes:
+        description: "Help page delle emotes"
+        aliases: [pe]
+        
