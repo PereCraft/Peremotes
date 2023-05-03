@@ -1,6 +1,6 @@
 name: Peremotes
 author: PereCraft
-version: 1.2
+version: 1.3
 main: peremotes.Peremotes
 description: Emotes di PereCraft
 commands:

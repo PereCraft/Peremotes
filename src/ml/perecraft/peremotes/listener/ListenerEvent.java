@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package listener;
+package ml.perecraft.peremotes.listener;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -22,7 +22,6 @@ import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
-import net.md_5.bungee.api.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
@@ -39,14 +38,13 @@ public class ListenerEvent implements Listener, IListenerEvent {
     
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
-        
-        if(!e.getPlayer().hasPermission("peremotes.sendemotes")) {
-            e.getPlayer().sendMessage(ChatColor.RED + "Non hai i permessi");
-            return;
-        }else if(!isEnabled) {
-            return;
-        }
-                
+
+        if(!isEnabled || !e.getPlayer().hasPermission("peremotes.sendemotes")) return;
+
+        // if(!e.getPlayer().hasPermission("peremotes.sendemotes")) {
+        //     // e.getPlayer().sendMessage(ChatColor.RED + "Non hai i permessi");
+        //     return;
+        // }        
         
         String message = e.getMessage();
         Matcher match = Pattern.compile("[(-)*|0-z]*").matcher(message);
@@ -67,12 +65,12 @@ public class ListenerEvent implements Listener, IListenerEvent {
     @EventHandler
     public void onSign(SignChangeEvent e) {
         
-        if(!e.getPlayer().hasPermission("peremotes.signemotes")) {
-            e.getPlayer().sendMessage(ChatColor.RED + "Non hai i permessi");
-            return;
-        }else if(!isEnabled) {
-            return;
-        }
+        if(!isEnabled || !e.getPlayer().hasPermission("peremotes.signemotes")) return;
+
+        // if(!e.getPlayer().hasPermission("peremotes.signemotes")) {
+        //     e.getPlayer().sendMessage(ChatColor.RED + "Non hai i permessi");
+        //     return;
+        // }
         
         int cont = 0;
         String message = String.join("\n", e.getLines());
@@ -96,7 +94,7 @@ public class ListenerEvent implements Listener, IListenerEvent {
     @Override
     public void setEmotes(FileConfiguration config) {
         
-        isEnabled = Boolean.parseBoolean(config.getString("enable"));
+        isEnabled = config.getBoolean("enable");
         if(!isEnabled)
             return;
         

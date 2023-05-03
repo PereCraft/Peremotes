@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package peremotes;
+package ml.perecraft.peremotes;
 
 import java.util.HashMap;
 
@@ -27,12 +27,7 @@ public interface IPlugin {
     /**
      * Method that reload the entire plugin
      */
-    public void onReload();
-    
-    /**
-     * Method that reload the configuration file
-     */
-    public void onReloadConfig();
+    public void reload();
     
     /**
      * Method that return the HashMap with the emotes

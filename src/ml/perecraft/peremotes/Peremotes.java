@@ -14,12 +14,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package peremotes;
+package ml.perecraft.peremotes;
 
 import java.util.HashMap;
 
-import listener.ListenerEvent;
-import command.Commands;
+import ml.perecraft.peremotes.command.Commands;
+import ml.perecraft.peremotes.listener.ListenerEvent;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -37,45 +37,34 @@ public class Peremotes extends JavaPlugin implements IPlugin {
     
     @Override
     public void onEnable() {
-        System.out.println("[Peremotes] Starting plugin...");
-        
         plugin = this;
         saveDefaultConfig();        
         
         listenerEvent = new ListenerEvent();
         Bukkit.getPluginManager().registerEvents(listenerEvent, plugin);
-        listenerEvent.setEmotes(getPlugin().getConfig());
+        listenerEvent.setEmotes(getConfig());
         
         commands = new Commands();
         getCommand("peremotes").setExecutor(commands);
-        
+        getLogger().info(getName() + " enabled");
     }
     
     @Override
     public void onDisable() {
-        System.out.println("[Peremotes] Stopping plugin...");
         listenerEvent = null;
         commands = null;
+        getLogger().info(getName() + " disabled");
     }
     
     public static Peremotes getPlugin() {
         return plugin;
     }
     
-    @Override
-    public void onReload() {
-        System.out.println("[Peremotes] Reloading plugin...");
-        
-        onDisable();
-        onEnable();
-    }
-    
-    @Override
-    public void onReloadConfig() {
-        System.out.println("[Peremotes] Reloading config file...");
-        
+    public void reload() {
+        getLogger().info("Reloading " + getName());
         reloadConfig();
-        onReload();
+        Bukkit.getPluginManager().disablePlugin(plugin);
+        Bukkit.getPluginManager().enablePlugin(plugin);
     }
     
     @Override

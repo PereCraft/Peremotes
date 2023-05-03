@@ -1,0 +1,7 @@
+/.vscode
+/lib
+/src/*.yml
+.DS_Store
+*.class
+*.jar
+*.log

@@ -14,15 +14,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package command;
+package ml.perecraft.peremotes.command;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import peremotes.Peremotes;
 
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.ChatColor;
@@ -34,7 +32,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
+
+import ml.perecraft.peremotes.Peremotes;
+
 import org.bukkit.configuration.file.FileConfiguration;
 
 /**
@@ -60,16 +62,6 @@ public class Commands implements CommandExecutor {
             } else if((args.length == 1) && (args[0].equals("help"))){
                 getHelp(p);
                 return true;
-            } else if((args.length == 1) && (args[0].equalsIgnoreCase("refresh"))){
-                
-                if(!cs.hasPermission("peremotes.refresh")){
-                    p.sendMessage(ChatColor.RED + "Non hai i permessi!");
-                    return false;
-                }
-                
-                Peremotes.getPlugin().onReloadConfig();
-                p.sendMessage(ChatColor.GREEN + "Reload config...");
-                return true;
             } else if((args.length == 1) && (args[0].equalsIgnoreCase("reload"))){
                 
                 if(!cs.hasPermission("peremotes.reload")){
@@ -77,7 +69,7 @@ public class Commands implements CommandExecutor {
                     return false;
                 }
                 
-                Peremotes.getPlugin().onReload();
+                Peremotes.getPlugin().reload();
                 p.sendMessage(ChatColor.GREEN + "Reload plugin...");
                 return true;
             } else if((args[0].equalsIgnoreCase("msg")) || (args[0].equalsIgnoreCase("tell"))) {
@@ -127,14 +119,10 @@ public class Commands implements CommandExecutor {
                 
             }
             
-        } else {
+        } else if(cs instanceof ConsoleCommandSender) {
             
-            if((args.length == 1) && (args[0].equalsIgnoreCase("refresh"))){
-                Peremotes.getPlugin().onReloadConfig();
-                System.out.println("Reload config...");
-                return true;
-            } else if((args.length == 1) && (args[0].equalsIgnoreCase("reload"))){
-                Peremotes.getPlugin().onReload();
+            if((args.length == 1) && (args[0].equalsIgnoreCase("reload"))){
+                Peremotes.getPlugin().reload();
                 System.out.println("Reload plugin...");
                 return true;
             }
